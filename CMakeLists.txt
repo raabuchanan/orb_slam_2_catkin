@@ -13,7 +13,7 @@ include(ExternalProject)
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
 
 ExternalProject_Add(orb_slam_2_src
-  GIT_REPOSITORY git@github.com:raulmur/ORB_SLAM2.git
+  GIT_REPOSITORY git@github.com:russellaabuchanan/VI_ORB_SLAM.git
   UPDATE_COMMAND ""
   CONFIGURE_COMMAND
       # Configuring DBoW2
@@ -42,7 +42,7 @@ ExternalProject_Add(orb_slam_2_src
       cd ../../../build/ &&
       make -j
   INSTALL_COMMAND
-      cp ../orb_slam_2_src/lib/libORB_SLAM2${CMAKE_SHARED_LIBRARY_SUFFIX} ${CATKIN_DEVEL_PREFIX}/lib/ &&
+      cp ../orb_slam_2_src/lib/libVI_ORB_SLAM${CMAKE_SHARED_LIBRARY_SUFFIX} ${CATKIN_DEVEL_PREFIX}/lib/ &&
       cp -r ../orb_slam_2_src/include ${CATKIN_DEVEL_PREFIX}/include/orb_slam_2 &&
       mkdir -p ${CATKIN_DEVEL_PREFIX}/include/orb_slam_2/Thirdparty/DBoW2/ &&
       cp -r ../orb_slam_2_src/Thirdparty/DBoW2/DBoW2 ${CATKIN_DEVEL_PREFIX}/include/orb_slam_2/Thirdparty/DBoW2/ &&
@@ -55,7 +55,7 @@ ExternalProject_Add(orb_slam_2_src
 cs_add_library(${PROJECT_NAME} src/dependency_tracker.cpp)
 add_dependencies(${PROJECT_NAME} orb_slam_2_src)
 target_link_libraries(${PROJECT_NAME}
-  ${CATKIN_DEVEL_PREFIX}/lib/libORB_SLAM2${CMAKE_SHARED_LIBRARY_SUFFIX} ${catkin_LIBRARIES})
+  ${CATKIN_DEVEL_PREFIX}/lib/libVI_ORB_SLAM${CMAKE_SHARED_LIBRARY_SUFFIX} ${catkin_LIBRARIES})
 
 cs_install()
 
